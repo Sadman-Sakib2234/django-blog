@@ -27,3 +27,9 @@ python manage.py createsuperuser
 ```
 
 After all these steps , you can start testing and developing this project. 
+
+Run
+'''
+python manage.py runserver
+'''
+then checkout http://127.0.0.1:8000/ the project will be running
