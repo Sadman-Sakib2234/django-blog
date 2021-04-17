@@ -1,5 +1,5 @@
 # django-blog
-It is a blog written i python using django it has many functionally
+It is a blog written in python using django it has many functionally
 >
 > - Home, About, Blog Home, Contact Page
 > - Functional Contact Form
