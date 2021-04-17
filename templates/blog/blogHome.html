@@ -1,5 +1,28 @@
 {% extends "base.html" %}
 {% block title %} Home {% endblock title %}
+{% block blogActive %} active {% endblock blogActive %}
+<style>
+a:hover {
+  text-decoration: none;
+}
+</style>
 {% block body %}
-<h1>Blog Home</h1>      
+
+<div class="container">
+  <div class="text-justify">
+    <h1 class="jumbotron-heading">Blog Posts</h1>
+    <p class="lead text-muted">These are all the blog posts.</p>
+  </div>
+</div>
+<div class="container my-4">
+        {% for post in allPosts  %}
+        <div class="post mt-4 h-75 bg-light shadow-sm shadow p-3">
+          <div class="mb-1 text-primary">{{post.timeStamp}}</div>
+          <a href="/blog/{{post.slug}}"><h3 class="text-dark">{{post.title}}</h3></a>
+          <p class="lead text-secondary">{{post.content| truncatechars:120}}</p>
+          <hr/>
+          <p class="text-dark float-right mr-auto">Author: {{post.author}}</p>
+          <a class="btn btn-sm btn-success" href="/blog/{{post.slug}}" role="button">Read more <i class="fas fa-arrow-right"></i></a>
+      </div>
+        {% endfor %}
 {% endblock body %}
