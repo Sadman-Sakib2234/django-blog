@@ -4,13 +4,10 @@
 {% block body %}
 <!--  Contact Form  -->
 <div class="container my-4">
-    <div class="alert alert-danger" role="alert">
-        There is a bug in this page epsode 78 79 message
-    </div>
     <h1>Contact 💁‍♂️</h1>
     <p>If you have any problems or want to ask something or want a blog post about something contact <a href="/">Hackclub.co</a> Admin</p>
 
-    <form action="/contact" method="post">
+    <form action="/contact/" method="post">
     {% csrf_token %}
     <div class="form-group">
         <label for="nameInput">Name</label>
