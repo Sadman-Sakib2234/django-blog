@@ -35,3 +35,9 @@ Run
 python manage.py runserver
 ```
 then checkout http://127.0.0.1:8000/ the project will be running
+
+<hr/>
+you can use the shell script to start fast i dont recommend that
+```
+bash run.sh
+```

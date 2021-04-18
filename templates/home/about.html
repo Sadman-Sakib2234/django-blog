@@ -6,16 +6,24 @@
         <div class="container">
           <h1 class="jumbotron-heading">About😎</h1>
           <p class="lead text-muted"><a href="/">Hackclub.co</a> is a open source blog website where people can make blog post a about tech,programming and hacking.Any thing tech related or it will be removed</p>
-          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="bi bi-globe2"></i> Website</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="bi bi-person-fill"></i> Developer</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="bi bi-code-slash"></i> Open Source</a>
-            </div>
-            <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><a href="/">Hackclub.co</a> is a open source blog website where people can make blog post a about tech,programming and hacking.Any thing tech related can be posted you can make friends and your learning budyy so what are you waiting for <a href="/blog">go to blog</a>.</div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This website was developed by a web developer who wants to learn a lot.check out my <a href="github.com/Sadman-Sakib2234>">github</a>.</div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"aria-labelledby="v-pills-messages-tab">As i said this website is open source so you can edit the code or customize the website.the code is on github chect it out <a href="https://github.com/Sadman-Sakib2234/django-blog">here</a>.</div>
-            </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="website-tab" data-toggle="tab" href="#website" role="tab" aria-controls="website" aria-selected="true"><i class="bi bi-globe2"></i> Website</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="developer-tab" data-toggle="tab" href="#developer" role="tab" aria-controls="developer" aria-selected="false"><i class="bi bi-person-fill"></i> Developer</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="code-tab" data-toggle="tab" href="#code" role="tab" aria-controls="code" aria-selected="false"><i class="bi bi-code-slash"></i> Open Source</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade text-xl-left mt-2 show active" id="website" role="tabpanel" aria-labelledby="website-tab"><a href="/">Hackclub.co</a> is a open source blog website where people can make blog post a about tech,programming and hacking.Any thing tech related can be posted you can make friends and your learning budyy so what are you waiting for <a href="/blog">go to blog</a>.</div>
+            <div class="tab-pane fade text-xl-left mt-2" id="developer" role="tabpanel" aria-labelledby="developer-tab">This website was developed by a web developer who wants to learn a lot.check out my <a href="github.com/Sadman-Sakib2234>">github</a>.</div>
+            <div class="tab-pane fade text-xl-left mt-2" id="code" role="tabpanel" aria-labelledby="code-tab">As i said this website is open source so you can edit the code or customize the website.the code is on github chect it out <a href="https://github.com/Sadman-Sakib2234/django-blog">here</a>.</div>
+          </div>
+          
+          
         </div>
       </section>    
 {% endblock body %}

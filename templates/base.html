@@ -25,7 +25,7 @@
             <a class="nav-link" href="/"><i class="bi bi-house-fill"></i> Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item {% block aboutActive %} {% endblock aboutActive %}">
-            <a class="nav-link" href="/about"><i class="bi bi-file-person"></i> About</a>
+            <a class="nav-link" href="about/"><i class="bi bi-file-person"></i> About</a>
         </li>
         <li class="nav-item {% block blogActive %} {% endblock blogActive %}">
             <a class="nav-link" href="/blog"><i class="fas fa-blog"></i> Blog</a>
@@ -34,13 +34,31 @@
             <a class="nav-link" href="/contact"><i class="bi bi-envelope-fill"></i> Contact</a>
         </li>
         </ul>
+     
         <!-- Search Bar -->
-        <form method="get" class="form-inline my-2 my-lg-0" action="/search">
-          <input class="form-control mr-sm-1" type="search" name="query" id="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Search</button>
-          <button type="button" class="btn btn-success ml-3" data-toggle="modal" data-target="#loginModal">Login</button>
-          <button type="button" class="btn btn-success ml-3" data-toggle="modal" data-target="#singupModal">Sing Up</button>
-          <a class="btn btn-outline-success ml-2 my-2 my-sm-0" role='button' href="/admin" target="_blank"><i class="bi bi-person-circle"></i> Admin Panel</a>
+        <form method="get" class="my-2 form-inline my-lg-0" action="/search">
+          <input class="form-control mr-sm-1 pr-5" type="search" name="query" id="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-3 mr-2 my-sm-0" type="submit">Search</button>
+          <!-- Log In Form -->
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-2">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+                <div class="dropdown-menu mr-2" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/logout">Logout</a>
+
+                        </div>
+                      </li>
+                      </ul>
+                      </div>
+                {% else %}
+              <!-- Button to  trigger Login modal -->
+          <button type="button" class="btn btn-success mr-2 ml-2" data-toggle="modal" data-target="#loginModal">
+          Login
+          </button>
+          <!-- Sing Up Form -->
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#singupModal">Sing Up</button>
+          {% endif %}
         </form>
     </div>
     </nav>  
@@ -65,7 +83,7 @@
     <!-- Footer Ends -->
 
   <!-- Sing Up Modal -->
-  <div class="modal fade" id="singupModal" tabindex="-1" aria-labelledby="singupModal" aria-hidden="true">
+  <div class="modal fade" id="singupModal" tabindex="-1" aria-labelledby="singupModal" aria-hidden="true" action= "/signup" method='post'>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -75,28 +93,36 @@
           </button>
         </div>
         <div class="modal-body">
-         <form>
-         {% csrf_token %}
-            <div class="form-group">
-              <label for="inputUsername"><i class="bi bi-person-circle"></i> Username</label>
-              <input type="username" class="form-control" id="inputUsername" aria-describedby="usernameHelp">
-              <small id="usernameHelp" class="form-text text-muted">select a unique username</small>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail">📧 Email address</label>
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="inputPassword"><i class="bi bi-lock"></i> Password</label>
-              <input type="password" class="form-control" id="inputPassword">
-            </div>
-            <div class="form-group">
-              <label for="inputPassword2"><i class="bi bi-lock"></i> Conform Password</label>
-              <input type="password" class="form-control" id="inputPassword2">
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="bi bi-check2"></i> Sing Up</button>
-          </form>
+          <form action= "/signup" method='post'>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter a username" required>
+          </div>
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="pass1">Choose a password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password" required>
+          </div>
+          <div class="form-group">
+            <label for="pass2">Confirm Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again" required>
+          </div>
+        
+
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
         </div>
         <div class="modal-footer">
         </div>
@@ -104,10 +130,7 @@
     </div>
   </div>
 
-  <!-- Button trigger modal -->
-
-
-  <!-- Modal -->
+  <!-- SingIn Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -118,17 +141,17 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form form action="login" method="POST">
           {% csrf_token %}
             <div class="form-group">
               <label for="singInInputUsername"><i class="bi bi-person-circle"></i> Username</label>
-              <input type="username" class="form-control" id="singInInputUsername">
+              <input type="username" class="form-control" id="singInInputUsername" name="singInInputUsername" required>
             </div>
             <div class="form-group">
               <label for="singInInputPassword"><i class="bi bi-lock"></i> Password</label>
-              <input type="password" class="form-control" id="singInInputPassword">
+              <input type="password" class="form-control" id="singInInputPassword" name="singInInputPassword" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Block level button</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sing In</button>
           </form>
         </div>
         <div class="modal-footer">
