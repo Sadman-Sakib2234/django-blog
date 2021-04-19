@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Home {% endblock title %}
+{% block js %}
+<script>
+  let previews = document.getElementsByClassName('preview');
+  Array.from(previews).forEach((element) => {
+    element.innerHTML=element.innerText;
+  })
+</script>
+    
+{% endblock js %}
 {% block blogActive %} active {% endblock blogActive %}
 {% block body %}
 
@@ -14,7 +23,7 @@
         <div class="post mt-4 h-75 bg-light shadow-sm shadow p-3">
           <div class="mb-1 text-primary">{{post.timeStamp}}</div>
           <a href="/blog/{{post.slug}}"><h3 class="text-dark">{{post.title}}</h3></a>
-          <p class="lead text-secondary">{{post.content| truncatechars:160}}</p>
+          <p class="lead card-text mb-auto text-secondary preview"><div class="preview">{{post.content|safe| truncatechars:500}}</div></p>
           <hr/>
           <p class="text-dark float-right mr-auto">Author: {{post.author}}</p>
           <a class="btn btn-sm btn-primary" href="/blog/{{post.slug}}" role="button">Read more <i class="bi bi-arrow-right"></i></a>
