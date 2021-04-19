@@ -5,6 +5,9 @@ It is a blog written in python using django it has many functionally
 > - Functional Contact Form
 > - Functional Blog Home Page and Blog Post
 > - Functional Contact From
+> - Functional User Authintacation
+> - Functional Comment Section
+> - Rendering Html inse Blog Post
 > - More Comming (This Project is Under Development)
 >
 
