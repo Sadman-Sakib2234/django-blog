@@ -20,13 +20,14 @@
 </div>
 <div class="container my-4">
         {% for post in allPosts  %}
-        <div class="post mt-4 h-75 bg-light shadow-sm shadow p-3">
-          <div class="mb-1 text-primary">{{post.timeStamp}}</div>
-          <a href="/blog/{{post.slug}}"><h3 class="text-dark">{{post.title}}</h3></a>
+        <div class="post mt-0 h-75 p-3"> 
+          <div class="mb-1 text-primary">{{post.timeStamp}} <p class="text-dark">by {{post.author}}</p></div>
+          <a href="/blog/{{post.slug}}"><h2 class="text-dark" style="margin-top:-10px;">{{post.title}}</h2></a>
           <p class="lead card-text mb-auto text-secondary preview"><div class="preview">{{post.content|safe| truncatechars:500}}</div></p>
+          <a class="btn btn-outline-primary btn-sm" href="/blog/{{post.slug}}" role="button">Read more <i class="bi bi-arrow-right"></i></a>
           <hr/>
-          <p class="text-dark float-right mr-auto">Author: {{post.author}}</p>
-          <a class="btn btn-sm btn-primary" href="/blog/{{post.slug}}" role="button">Read more <i class="bi bi-arrow-right"></i></a>
 </div>
         {% endfor %}
 {% endblock body %}
+
+{% comment %} bg-light shadow-sm shadow {% endcomment %}
